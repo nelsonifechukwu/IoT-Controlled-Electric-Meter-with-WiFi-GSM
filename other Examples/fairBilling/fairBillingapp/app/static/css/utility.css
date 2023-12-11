@@ -1,0 +1,273 @@
+body {
+    min-width: 310px;
+    height: 400px;
+    margin: 0 auto;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    background-color: #e6e6e6;
+  }
+  
+  footer{
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  
+  .container-num{
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    max-width: 1150px;
+    margin-bottom: 40px;
+    margin-top: 50px;
+  }
+  
+  .num-num{
+    background-color: rgb(188, 188, 188);
+    padding: 10px;
+    height: 4em;
+    width: 17em;
+    border-radius: 7px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  
+  .num-num > p{
+    margin-top: 10px;
+    line-height: 155%;
+  }
+  
+  .container-fluid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* creates 2 columns of equal width */
+    grid-gap: 10px; /* adds a 10px gap between items */
+    max-width: 1070px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 7px;
+  }
+  
+  #v{
+    margin-top: 40px;
+    height: 25em;
+  }
+  
+  .container {
+    padding: 10px;
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    margin-left: 200px;
+  }
+  
+  .header{
+    display: flex;
+    justify-content: space-between;
+    height: 25px;
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    position: fixed;
+    box-shadow: 0 4px 10px 0 #CACACA; 
+    background-color: white;
+    z-index: 2;
+  }
+  
+  .logo{
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    font-size: 1.2em;
+    font-weight: 600;
+  
+  }
+
+  .circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
+    animation: blink 1s ease-in-out infinite;
+    box-shadow: 0 0 12px 2px green;
+    margin-left: 50px;
+  }
+
+  .on-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
+    animation: blink 1s ease-in-out infinite;
+    box-shadow: 0 0 12px 2px green;
+    margin-left: 12px;
+  }
+
+  .off-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    animation: blink 1s ease-in-out infinite;
+    box-shadow: 0 0 12px 2px red;
+    margin-left: 12px;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* The alert message box */
+  .alert_green {
+      background-color: #1ab336; /* Red */
+      color: white;
+      margin-bottom: 15px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 999; /* Make sure the floating container is on top of the other elements */
+      padding: 15px;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      font-size: 0.9em;
+    }
+  
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }
+  
+  /* BUTTON STYLES */
+  .buttonstyle {
+    background-color: #007bff;
+    border: none;
+    background-position: 0px -401px;
+    color: white;
+    height: 30px;
+    margin-top: 15px;
+    border-radius: 7px;
+    padding: 20px;
+    width: 150px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30%;
+  }
+  
+  .buttonstyle:hover {
+    background: #005ec2;
+  }
+  
+  .logout{
+    background-color: #b51414;
+    background-position: 0px -401px;
+    border: none;
+    color: white;
+    height: 30px;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 40px;
+    border-radius: 7px;
+    padding: 20px;
+    width: 150px;
+    cursor: pointer;
+    line-height: 30%;
+  }
+  
+  .logout:hover{
+    background-color: #880e0e;
+  }
+
+  body {
+    font-family: 'lato', sans-serif;
+ }
+  .container {
+    max-width: 600px;
+    display: flex;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+ }
+  h2 {
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: center;
+ }
+  h2 small {
+    font-size: 0.5em;
+ }
+  .responsive-table li {
+    gap: 50px;
+    margin-top: 70px;
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+ }
+  .responsive-table .table-header {
+    background-color: #95a5a6;
+    width: 500px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+ }
+  .responsive-table .table-row {
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+ }
+  .responsive-table .col-1 {
+    flex-basis: 30%;
+ }
+  .responsive-table .col-2 {
+    flex-basis: 40%;
+ }
+  .responsive-table .col-3 {
+    flex-basis: 30%;
+ }
+
+  @media all and (max-width: 767px) {
+    .responsive-table .table-header {
+      display: none;
+   }
+    .responsive-table li {
+      display: block;
+   }
+    .responsive-table .col {
+      flex-basis: 100%;
+   }
+    .responsive-table .col {
+      display: flex;
+      padding: 10px 0;
+   }
+    .responsive-table .col:before {
+      color: #6c7a89;
+      padding-right: 10px;
+      content: attr(data-label);
+      flex-basis: 50%;
+      text-align: right;
+   }
+ }
+  

@@ -1,0 +1,226 @@
+<html lang="en">
+  <head>
+    <link
+      href="{{ url_for('static', filename= 'css/plotstyle.css') }}"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <!--<link href="{{ url_for('static', filename= 'css/style.css') }}" rel="stylesheet" type="text/css" media="all"> -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--<meta http-equiv="refresh" content="5">-->
+    <title>SMART METER STATUS</title>
+    <!-- HIGH CHART-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <div class="alert_green">
+          <!-- <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> -->
+          {{ message }}
+        </div>
+        <script>
+          // Fade out the alert box after 3 seconds
+          setTimeout(function() {
+            var alertBox = document.querySelector('.alert_green');
+            alertBox.style.opacity = '0';
+            alertBox.style.transition = 'opacity 1s ease-in-out';
+            setTimeout(function() {
+              alertBox.remove();
+            }, 1000);
+          }, 800);
+        </script>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+    <header class="header">
+      <p class="logo">BOLU.O - SMART METERING DASHBOARD</p>
+
+      <span style="display: flex">
+        <!--DELETE ALL DATA-->
+        <form action="/delete" method="post">
+          <input type="submit" class="buttonstyle" onclick="handleDelete()" value="CLEAR ALL DATA" />
+        </form>
+        <!-- LOGOUT -->
+        <form action="/logout" method="post">
+          <input type="submit" class="logout" value="LOGOUT" />
+        </form>
+      </span>
+    </header>
+    
+    <!--HIGH CHART -->
+    <div class="jumbotron"></div>
+    <br />
+    <br />
+    <div class="container-fluid">
+      {% for i in range(1, 2) %}
+      <div class="container">
+        <button
+          class="form-button"
+          id="button-c{{ i }}"
+          onclick="updateState('c{{ i }}')"
+        ></button>
+        <div id="c{{ i }}"></div>
+      </div>
+      {% endfor %}
+      <div id="v" class="container"></div>
+    </div>
+  </body>
+
+  <script>
+    function updateButton(button, newText) {
+      button.textContent = newText;
+    }
+
+    for (let id = 1; id < 2; id++) {
+      fetch(`/get_state/c${id}`)
+        .then((response) => response.text())
+        .then((data) => {
+          const button = document.getElementById(`button-c${id}`);
+          console.log("data: ", data);
+          if (parseInt(data) === 1) {
+            console.log("button: ON");
+            button.className = "on-button";
+            button.textContent = "ON";
+          } else {
+            console.log("button: OFF");
+            button.className = "off-button";
+            button.textContent = "OFF";
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching value:", error);
+        });
+    }
+
+    //update state
+    function updateState(id) {
+      fetch(`/updatestate/button=${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.text()) //be careful of {response.text()}
+        .then((newState) => {
+          const button = document.getElementById(`button-${id}`);
+          console.log(newState);
+          if (newState === "1") {
+            updateButton(button, "ON");
+            button.className = "on-button";
+          } else {
+            updateButton(button, "OFF");
+            button.className = "off-button";
+          }
+        })
+        .catch((error) => {
+          console.error("Error updating state:", error);
+        });
+    }
+      function handleDelete(){
+    localStorage.clear();
+  }
+
+    //Create Chart
+    function createChart(id, titleText, yAxisTitleText, dataPointIndex, col) {
+      let chartData = localStorage.getItem(`chartData-${id}`);
+  if (chartData) {
+    chartData = JSON.parse(chartData);
+  } else {
+    chartData = [];
+  }
+      const chart = new Highcharts.Chart({
+        chart: { renderTo: id },
+        title: { text: titleText },
+        series: [
+          {
+            showInLegend: false,
+            data: chartData,
+          },
+        ],
+        plotOptions: {
+          line: {
+            animation: false,
+            dataLabels: { enabled: true },
+          },
+          series: { color: col },
+        },
+        xAxis: {
+          type: "datetime",
+          dateTimeLabelFormats: { second: "%H:%M:%S" },
+        },
+        yAxis: { title: { text: yAxisTitleText } },
+        credits: { enabled: false },
+      });
+      setInterval(() => {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            const x = new Date().getTime();
+            const y = this.responseText;
+            //const y_strip = y.slice(1, -1);
+            const y_split = y.split(", ");
+            const y_plot = parseFloat(y_split[dataPointIndex]);
+
+            if (chart.series[0].data.length > 40) {
+              chart.series[0].addPoint([x, y_plot], true, true, true);
+            } else {
+              chart.series[0].addPoint([x, y_plot], true, false, true);
+            }
+            chartData = chart.series[0].data.map((point) => [point.x, point.y]);
+        localStorage.setItem(`chartData-${id}`, JSON.stringify(chartData));
+          }
+        };
+        xhttp.open("GET", "/data", true);
+        xhttp.send();
+      }, 5000);
+      return chart;
+    }
+
+    const c1 = createChart(
+      "c1",
+      "Channel 1",
+      "Current (A)",
+      1, //because id takes position zero
+      "#f2ad0c"
+    );
+
+    const v = createChart("v", "Voltage", "Voltage (V)", 2, "#faa2a2");
+
+
+    function showToast(message) {
+  // Create the toast element
+  var toast = document.createElement("div");
+  toast.classList.add("toast");
+  toast.innerText = message;
+
+  // Add the toast to the container
+  var container = document.getElementById("toast-container");
+  container.appendChild(toast);
+
+  // Show the toast
+  setTimeout(function() {
+    toast.classList.add("fade-in");
+  }, 100);
+
+  // Hide the toast
+  setTimeout(function() {
+    toast.classList.add("fade-out");
+  }, 3000);
+
+  // Remove the toast from the container
+  setTimeout(function() {
+    container.removeChild(toast);
+  }, 3300);
+}
+  </script>
+</html>

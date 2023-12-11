@@ -1,0 +1,237 @@
+body {
+  min-width: 310px;
+  height: 400px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: Arial;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.container-fluid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* creates 2 columns of equal width */
+  grid-gap: 10px; /* adds a 10px gap between items */
+}
+
+.container {
+  padding: 10px;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  height: 25px;
+  padding: 20px;
+  align-items: center;
+}
+
+.logo{
+  font-family: "Helvetica Neue",Helvetica,Arial;
+  font-size: 1.2em;
+
+}
+
+/* The alert message box */
+.alert_green {
+	background-color: #1ab336; /* Red */
+	color: white;
+	margin-bottom: 15px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999; /* Make sure the floating container is on top of the other elements */
+	padding: 15px;
+  font-family: "Helvetica Neue",Helvetica,Arial;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	font-size: 0.9em;
+  }
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+/* BUTTON STYLES */
+.buttonstyle {
+  background: rgb(255, 255, 255);
+  background-position: 0px -401px;
+  border: solid 1px #880e0e;
+  color: #880e0e;
+  height: 30px;
+  margin-top: 15px;
+  padding-bottom: 2px;
+  border-radius: 7px;
+  padding: 20px;
+  width: 150px;
+  cursor: pointer;
+  line-height: 50%;
+}
+
+.logout{
+  background-color: #b51414;
+  background-position: 0px -401px;
+  border: solid 1px #b51414;
+  color: white;
+  height: 30px;
+  margin-top: 15px;
+  margin-left: 10px;
+  padding-bottom: 2px;
+  border-radius: 7px;
+  padding: 20px;
+  width: 150px;
+  cursor: pointer;
+  line-height: 50%;
+}
+
+.logout:hover{
+  background-color: #880e0e;
+}
+
+.off-button{
+    background: white;
+    /* background-position: 0px -401px; */
+    border: solid 1px #e3b04b;
+    color: #e3b04b;
+    height: 30px;
+    padding-bottom: 2px;
+    border-radius: 7px;
+    padding: 20px;
+    width: 120px;
+    cursor: pointer; 
+    line-height: 50%;  
+}
+
+.on-button{
+  background: white;
+  /* background-position: 0px -401px; */
+  border: solid 1px #26de51;
+  color: #26de51;
+  height: 30px;
+  padding-bottom: 2px;
+  border-radius: 7px;
+  padding: 20px;
+  width: 120px;
+  cursor: pointer; 
+  line-height: 50%;  
+}
+
+.off-button:hover{
+    background: #e3b04b;
+    color: white;
+}
+
+.on-button:hover{
+  background: #26de51;
+  color: white;
+}
+
+.buttonstyle:hover {
+  background: #880e0e;
+  background-position: 0px -501px;
+  color: white;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.toast {
+  position: relative;
+  min-width: 250px;
+  padding: 15px 20px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.toast.fade-in {
+  opacity: 1;
+}
+
+.toast.fade-out {
+  opacity: 0;
+}

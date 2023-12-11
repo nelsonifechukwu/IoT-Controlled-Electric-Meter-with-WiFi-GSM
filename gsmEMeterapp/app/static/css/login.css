@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
+ * {
+	 box-sizing: border-box;
+}
+ body {
+	 font-family: 'Rubik', sans-serif;
+}
+ .container {
+	 display: flex;
+	 height: 100vh;
+}
+ .left {
+	 overflow: hidden;
+	 display: flex;
+	 flex-wrap: wrap;
+	 flex-direction: column;
+	 justify-content: center;
+	 animation-name: left;
+	 animation-duration: 1s;
+	 animation-fill-mode: both;
+	 animation-delay: 1s;
+}
+ .right {
+	 flex: 1;
+	 background-color: black;
+	 transition: 1s;
+	 background-image: url('https://img.freepik.com/free-photo/illuminated-city-night_1127-2144.jpg?w=740&t=st=1678018898~exp=1678019498~hmac=323020cf7d4d82e89be67362801368f94c8e43e1291c30df4faec1ae15b9da3c');
+	 background-size: cover;
+	 background-repeat: no-repeat;
+	 background-position: center;
+}
+ .header > h2 {
+	 margin: 0;
+	 color: #4f46a5;
+}
+ .header > h4 {
+	 margin-top: 10px;
+	 font-weight: normal;
+	 font-size: 15px;
+	 color: rgba(0, 0, 0, .4);
+}
+ .form {
+	 max-width: 80%;
+	 display: flex;
+	 flex-direction: column;
+}
+ .form > p {
+	 text-align: right;
+}
+ .form > p > a {
+	 color: #000;
+	 font-size: 14px;
+}
+ .form-field {
+	 height: 46px;
+	 padding: 0 16px;
+	 border: 2px solid #ddd;
+	 border-radius: 4px;
+	 font-family: 'Rubik', sans-serif;
+	 outline: 0;
+	 transition: 0.2s;
+	 margin-top: 20px;
+}
+ .form-field:focus {
+	 border-color: #0f7ef1;
+}
+ .form > button {
+	 padding: 12px 10px;
+	 border: 0;
+	 background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
+	 border-radius: 3px;
+	 margin-top: 10px;
+	 color: #fff;
+	 letter-spacing: 1px;
+	 font-family: 'Rubik', sans-serif;
+   cursor: pointer;
+}
+ .animation {
+	 animation-name: move;
+	 animation-duration: 0.4s;
+	 animation-fill-mode: both;
+	 animation-delay: 2s;
+}
+ .a1 {
+	 animation-delay: 2s;
+}
+ .a2 {
+	 animation-delay: 2.1s;
+}
+ .a3 {
+	 animation-delay: 2.2s;
+}
+ .a4 {
+	 animation-delay: 2.3s;
+}
+ .a5 {
+	 animation-delay: 2.4s;
+}
+ .a6 {
+	 animation-delay: 2.5s;
+}
+ @keyframes move {
+	 0% {
+		 opacity: 0;
+		 visibility: hidden;
+		 transform: translateY(-40px);
+	}
+	 100% {
+		 opacity: 1;
+		 visibility: visible;
+		 transform: translateY(0);
+	}
+}
+ @keyframes left {
+	 0% {
+		 opacity: 0;
+		 width: 0;
+	}
+	 100% {
+		 opacity: 1;
+		 padding: 20px 40px;
+		 width: 440px;
+	}
+}
+
+.alert_red {
+	background-color: #d40000; /* Red */
+	color: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999; /* Make sure the floating container is on top of the other elements */
+	padding: 15px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	font-size: 0.9em;
+  }
+ 
+  /* The close button */
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+	color: black;
+  }

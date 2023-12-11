@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link
+      href="{{ url_for('static', filename= 'css/style.css') }}"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    /> -->
+    <link rel="stylesheet" href="../static/css/login.css" />
+    <title>SMART METERING DASHBOARD</title>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <div class="alert_red">
+        <!-- <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> -->
+        {{ message }}
+      </div>
+      <script>
+        // Fade out the alert box after 3 seconds
+        setTimeout(function () {
+          var alertBox = document.querySelector(".alert_red");
+          alertBox.style.opacity = "0";
+          alertBox.style.transition = "opacity 1s ease-in-out";
+          setTimeout(function () {
+            alertBox.remove();
+          }, 1000);
+        }, 3000);
+      </script>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+    <div class="container">
+      <div class="left">
+        <div class="header">
+          <h2 class="animation a1">SMART METERING DASHBOARD</h2>
+          <h4 class="animation a2">
+            Log in to your account using username and password
+          </h4>
+        </div>
+        <form action="/" method="post">
+          <div class="form">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-field animation a3"
+              placeholder="Username"
+            />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-field animation a4"
+              placeholder="Password"
+            />
+            <button class="animation a6">LOGIN</button>
+          </div>
+        </form>
+        <p class="animation a5">
+          Copyright &copy;
+          <script>
+            document.write(/\d{4}/.exec(Date())[0]);
+          </script>
+          Boluwaduro
+        </p>
+      </div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>

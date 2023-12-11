@@ -1,0 +1,279 @@
+body {
+  min-width: 310px;
+  height: 400px;
+  margin: 0 auto;
+  font-family: "Helvetica Neue",Helvetica,Arial;
+  background-color: #e6e6e6;
+}
+
+footer{
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.label {
+  margin-top: 10px;
+}
+
+.container-num{
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  max-width: 1150px;
+  margin-bottom: 40px;
+  margin-top: 50px;
+}
+
+.num-num{
+  background-color: rgb(188, 188, 188);
+  padding: 10px;
+  height: 4em;
+  width: 17em;
+  border-radius: 7px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.num-num > p{
+  margin-top: 10px;
+  line-height: 155%;
+}
+
+.container-fluid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* creates 2 columns of equal width */
+  grid-gap: 10px; /* adds a 10px gap between items */
+  max-width: 1110px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 7px;
+}
+
+#v{
+  margin-top: 40px;
+  height: 25em;
+}
+
+.container {
+  padding: 5px;
+  padding-top: 10px;
+  width: 100%;
+  margin-left: 300px;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  height: 25px;
+  width: 100%;
+  padding: 20px;
+  align-items: center;
+  position: fixed;
+  box-shadow: 0 4px 10px 0 #CACACA; 
+  background-color: white;
+  z-index: 2;
+}
+
+.logo{
+  font-family: "Helvetica Neue",Helvetica,Arial;
+  font-size: 1.2em;
+  font-weight: 600;
+
+}
+
+/* The alert message box */
+.alert_green {
+	background-color: #1ab336; /* Red */
+	color: white;
+	margin-bottom: 15px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999; /* Make sure the floating container is on top of the other elements */
+	padding: 15px;
+  font-family: "Helvetica Neue",Helvetica,Arial;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	font-size: 0.9em;
+  }
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+/* BUTTON STYLES */
+.buttonstyle {
+  background-color: #007bff;
+  border: none;
+  background-position: 0px -401px;
+  color: white;
+  height: 30px;
+  margin-top: 15px;
+  border-radius: 7px;
+  padding: 20px;
+  width: 150px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 30%;
+}
+
+.buttonstyle:hover {
+  background: #005ec2;
+}
+
+.logout{
+  background-color: #b51414;
+  background-position: 0px -401px;
+  border: none;
+  color: white;
+  height: 30px;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 40px;
+  border-radius: 7px;
+  padding: 20px;
+  width: 150px;
+  cursor: pointer;
+  line-height: 30%;
+}
+
+.logout:hover{
+  background-color: #880e0e;
+}
+
+.off-button{
+    background: white;
+    /* background-position: 0px -401px; */
+    border: solid 1px #e3b04b;
+    color: #e3b04b;
+    height: 30px;
+    padding-bottom: 2px;
+    border-radius: 7px;
+    padding: 20px;
+    width: 120px;
+    cursor: pointer; 
+    line-height: 50%;  
+}
+
+.on-button{
+  background: white;
+  /* background-position: 0px -401px; */
+  border: solid 1px #26de51;
+  color: #26de51;
+  height: 30px;
+  padding-bottom: 2px;
+  border-radius: 7px;
+  padding: 20px;
+  width: 120px;
+  cursor: pointer; 
+  line-height: 50%;  
+}
+
+.off-button:hover{
+    background: #e3b04b;
+    color: white;
+}
+
+.on-button:hover{
+  background: #26de51;
+  color: white;
+}
+
+/* Modal Container */
+#modalContainer {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Content */
+#modalContent {
+  background-color: #f8f8f8;
+  margin: 10% auto;
+  padding: 20px;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+/* Modal Header */
+#modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Modal Body */
+#modalBody {
+  margin-top: 20px;
+}
+
+/* Modal Form */
+#modalForm {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal Form Label */
+#modalForm label {
+  margin-bottom: 10px;
+}
+
+/* Modal Form Input */
+#modalForm input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Modal Form Button */
+#modalForm button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Close Modal Button */
+#closeModalBtn {
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  color: #777;
+}
+
+/* Responsive Modal */
+@media (max-width: 600px) {
+  /* Adjust modal width for smaller screens */
+  #modalContent {
+    width: 90%;
+  }
+}
+
